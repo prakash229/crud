@@ -1,0 +1,22 @@
+{% extends "api1t/header.html" %}
+
+{% block content %}
+	<form action="taskdelete" method="POST">
+	{% csrf_token %}
+	<ol>
+	{% for l in listnumber %}
+		{% if l.taskstatus == True %}
+			<li  style="background-color: #00ff00; padding: 1px;" ><input type="checkbox" name="checks" value="{{ l.id }}"><strike>
+			{{ l.taskdetails }} &nbsp &nbsp &nbsp &nbsp {{ l.datebegan|date:'m-d H:i' }} </strike> <br></p>
+			</li>
+		{% else %}
+			<li  style="background-color: #ffffff; padding: 1px;"><input type="checkbox" name="checks" value="{{ l.id }}">
+			{{ l.taskdetails }} &nbsp &nbsp &nbsp &nbsp{{ l.datebegan|date:'m-d  H:i' }}  <br></p>
+			</li>
+		{% endif %}
+	{% endfor %}
+	</ol>
+		<input type="submit" value="Task Delete">
+		<button type="submit" formaction="taskdone">Task Done</button>
+	</form>
+{% endblock %}

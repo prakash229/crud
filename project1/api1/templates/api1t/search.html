@@ -1,0 +1,17 @@
+{% extends "api1t/header.html" %}
+
+{% block content %}
+
+<form action="searchtask" method="POST">
+	{% csrf_token %}
+	<h3>Enter New Task to add:</h3>
+	<input type="radio" name="checks" value="id">Primary key
+	<input type="radio" name="checks" value="datebegan">Date
+	<input type="radio" name="checks" value="taskdetails" checked>Task
+	<input type="radio" name="checks" value="taskstatus">Staus
+
+	<input type="text" name="searchinput" style="width:300px; height: 20px;" ><br><br>
+	<input type="submit" value="Search" style="height:40px; width:70px; background-color: #365eee; color:white ">
+</form>
+
+{% endblock %}
